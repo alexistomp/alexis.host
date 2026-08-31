@@ -3,67 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Link Hub — Your Gateway</title>
+  <title>alexis.host</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Hero / Greeting Section -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <p class="greeting" id="greeting">Good evening</p>
-      <h1 class="title">Where would you like to go?</h1>
-      <p class="subtitle">Search or scroll to explore curated links</p>
-
-      <div class="search-wrapper">
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input
-          type="search"
-          id="searchInput"
-          class="search-input"
-          placeholder="Search links..."
-          autocomplete="off"
-          spellcheck="false"
-        />
-        <kbd class="search-hint">/</kbd>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <button class="nav-item active" data-view="search" title="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search</span>
+        </button>
+        <button class="nav-item" data-view="pages" title="Pages">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Pages</span>
+        </button>
+        <button class="nav-item" data-view="library" title="Library">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Library</span>
+        </button>
       </div>
-    </div>
 
-    <button class="scroll-indicator" id="scrollBtn" aria-label="Scroll to links">
-      <span>Explore links</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
+      <div class="sidebar-bottom">
+        <div class="user-badge">
+          <div class="avatar">A</div>
+          <span class="user-label">alexis.host</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile menu toggle -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
       </svg>
     </button>
-  </section>
 
-  <!-- Links Section -->
-  <section class="links-section" id="links">
-    <div class="container">
-      <div class="section-header">
-        <h2>Hosted Links</h2>
-        <p id="resultCount" class="result-count"></p>
-      </div>
+    <!-- Main content -->
+    <main class="main" id="main">
+      <!-- SEARCH VIEW -->
+      <section class="view view-search active" id="view-search">
+        <!-- Fixed middle group: greeting + search -->
+        <div class="center-group">
+          <h1 class="greeting" id="greeting">Good evening</h1>
+          <form class="search-form" id="searchForm" autocomplete="off">
+            <div class="search-box" id="searchBox">
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="search"
+                id="searchInput"
+                class="search-input"
+                placeholder="Ask anything"
+                spellcheck="false"
+              />
+              <button type="submit" class="search-go" title="Go">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
 
-      <div class="categories" id="categories">
-        <!-- Categories populated by JS -->
-      </div>
+        <!-- Results layer — sits below, does not shift the center group -->
+        <div class="results-layer" id="resultsLayer">
+          <div class="live-results" id="liveResults" hidden>
+            <h3 class="live-title">Matching pages</h3>
+            <div class="live-list" id="liveList"></div>
+          </div>
+        </div>
 
-      <div class="no-results" id="noResults" hidden>
-        <p>No links match your search.</p>
-        <button id="clearSearch">Clear search</button>
-      </div>
-    </div>
-  </section>
+        <p class="search-hint-text">Press Enter to open a match, ask ChatGPT, or visit a URL</p>
+      </section>
 
-  <footer class="footer">
-    <p>Built as a personal link hub · Press <kbd>/</kbd> to focus search</p>
-  </footer>
+      <!-- PAGES VIEW -->
+      <section class="view view-pages" id="view-pages">
+        <div class="pages-header">
+          <h2>Pages</h2>
+          <p class="pages-sub" id="pagesCount"></p>
+        </div>
+        <div class="categories" id="categories"></div>
+        <div class="no-results" id="noResults" hidden>
+          <p>No pages found.</p>
+        </div>
+      </section>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
