@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link Hub — Your Gateway</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Hero / Greeting Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="greeting" id="greeting">Good evening</p>
+      <h1 class="title">Where would you like to go?</h1>
+      <p class="subtitle">Search or scroll to explore curated links</p>
+
+      <div class="search-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="search"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search links..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <kbd class="search-hint">/</kbd>
+      </div>
+    </div>
+
+    <button class="scroll-indicator" id="scrollBtn" aria-label="Scroll to links">
+      <span>Explore links</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </section>
+
+  <!-- Links Section -->
+  <section class="links-section" id="links">
+    <div class="container">
+      <div class="section-header">
+        <h2>Hosted Links</h2>
+        <p id="resultCount" class="result-count"></p>
+      </div>
+
+      <div class="categories" id="categories">
+        <!-- Categories populated by JS -->
+      </div>
+
+      <div class="no-results" id="noResults" hidden>
+        <p>No links match your search.</p>
+        <button id="clearSearch">Clear search</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Built as a personal link hub · Press <kbd>/</kbd> to focus search</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
