@@ -31,8 +31,6 @@
   --avatar-bg: #3a3a3a;
   --clear-bg: #363636;
   --clear-hover: #444;
-  --key-bg: #333;
-  --key-border: #4a4a4a;
 }
 
 /* Light theme */
@@ -58,8 +56,6 @@
   --avatar-bg: #e0e0e0;
   --clear-bg: #e8e8e8;
   --clear-hover: #ddd;
-  --key-bg: #f0f0f0;
-  --key-border: #d0d0d0;
 }
 
 html {
@@ -182,7 +178,6 @@ body {
   text-align: left;
   position: relative;
   overflow: hidden;
-  text-decoration: none;
 }
 
 /* Center icons when sidebar is collapsed */
@@ -372,7 +367,19 @@ body {
   display: block;
 }
 
-/* ===== Persistent search bar ===== */
+/* ===== Search view — grouped middle ===== */
+.view-search {
+  display: none;
+  position: relative;
+  min-height: 100%;
+  padding: 0 1.5rem 4.5rem;
+}
+
+.view-search.active {
+  display: block;
+}
+
+/* Greeting + search locked to vertical center */
 .center-group {
   position: absolute;
   top: 42%;
@@ -380,53 +387,12 @@ body {
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 720px;
-  padding: 0;
   text-align: center;
-  z-index: 30;
+  z-index: 2;
   pointer-events: none;
-  transition:
-    top 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-    bottom 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-    max-width 0.35s ease;
 }
 
 .center-group .search-form {
-  pointer-events: auto;
-}
-
-/* Search bar glides to fixed bottom when on Apps / Create
-   Centered in the main area (accounts for sidebar open/collapsed) */
-.center-group.search-bottom {
-  position: fixed;
-  top: auto;
-  bottom: 1.5rem;
-  left: calc(220px + (100vw - 220px) / 2);
-  transform: translateX(-50%);
-  max-width: 720px;
-  width: min(720px, calc(100vw - 220px - 3rem));
-  padding: 0;
-  z-index: 25;
-  pointer-events: none;
-}
-
-.app:has(.sidebar.collapsed) .center-group.search-bottom {
-  left: calc(64px + (100vw - 64px) / 2);
-  width: min(720px, calc(100vw - 64px - 3rem));
-}
-
-@media (max-width: 768px) {
-  .center-group.search-bottom {
-    left: 50%;
-    width: calc(100% - 1.5rem);
-  }
-  .app:has(.sidebar.collapsed) .center-group.search-bottom {
-    left: 50%;
-    width: calc(100% - 1.5rem);
-  }
-}
-
-.center-group.search-bottom .search-form {
   pointer-events: auto;
 }
 
@@ -436,32 +402,21 @@ body {
   letter-spacing: -0.03em;
   color: var(--text);
   margin-bottom: 1.85rem;
-  transition: opacity 0.3s ease, transform 0.3s ease, margin 0.3s ease, height 0.3s ease, max-height 0.3s ease;
 }
 
-.greeting.hidden-greeting {
-  opacity: 0;
-  transform: translateY(-12px);
-  margin-bottom: 0;
-  height: 0;
-  max-height: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-/* Search box — two-row: query on top, tools below */
+/* Search box — wider, boxy, animated on focus */
 .search-form {
   width: 100%;
 }
 
 .search-box {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  align-items: center;
+  gap: 0.35rem;
   background: var(--search-bg);
   border: 1px solid var(--search-border);
-  border-radius: 16px;
-  padding: 0.55rem 0.7rem 0.5rem;
+  border-radius: 10px;
+  padding: 0.3rem 0.35rem 0.3rem 0.4rem;
   transition:
     border-color 0.28s ease,
     box-shadow 0.28s ease,
@@ -474,36 +429,13 @@ body {
   box-shadow:
     0 0 0 4px var(--search-glow),
     0 8px 28px rgba(0, 0, 0, 0.18);
-  transform: scale(1.015);
+  transform: scale(1.02);
 }
 
-.center-group.search-bottom .search-box:focus-within {
-  transform: scale(1.01);
-}
-
-.search-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  width: 100%;
-}
-
-.search-row-query {
-  min-height: 36px;
-}
-
-.search-row-tools {
-  justify-content: flex-start;
-  gap: 0.35rem;
-  /* no divider */
-  padding-top: 0.2rem;
-  
-}
-
-/* Plus button */
+/* Plus button (left) */
 .search-plus {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
   border: none;
   background: transparent;
@@ -517,7 +449,7 @@ body {
 }
 
 .search-plus:hover {
-  background: var(--bg-elevated);
+  background: var(--go-bg);
   color: var(--text);
 }
 
@@ -547,7 +479,7 @@ body {
   color: var(--text);
   font-family: inherit;
   font-size: 1rem;
-  padding: 0.45rem 0.2rem;
+  padding: 0.8rem 0.35rem;
   min-width: 0;
 }
 
@@ -559,7 +491,7 @@ body {
 
 .placeholder-anim {
   position: absolute;
-  left: 0.2rem;
+  left: 0.35rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-dim);
@@ -569,7 +501,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: calc(100% - 0.4rem);
+  max-width: calc(100% - 0.7rem);
   opacity: 1;
   transition: opacity 0.32s ease;
 }
@@ -612,52 +544,9 @@ body {
   display: none !important;
 }
 
-/* Google / ChatGPT engine toggle */
-.engine-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  flex-shrink: 0;
-  margin-left: 0.15rem;
-}
-
-.engine-btn {
-  font-family: inherit;
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 0.35rem 0.7rem;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    background 0.18s ease,
-    color 0.18s ease,
-    border-color 0.18s ease;
-}
-
-.engine-btn:hover {
-  color: var(--text-muted);
-  background: var(--bg-elevated);
-}
-
-.engine-btn.active {
-  background: var(--bg-elevated);
-  color: var(--text);
-  border-color: var(--border);
-}
-
-[data-theme="light"] .engine-btn.active {
-  background: #f0f0f0;
-  border-color: #ddd;
-}
-
-/* Go button */
 .search-go {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   border: none;
   background: var(--go-bg);
@@ -667,12 +556,12 @@ body {
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  margin-left: auto;
   transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .search-go:hover {
   background: var(--go-hover);
+  color: var(--go-color);
   box-shadow: 0 2px 10px rgba(59, 130, 246, 0.35);
 }
 
@@ -680,30 +569,16 @@ body {
   transform: scale(0.94);
 }
 
-/* Search view — only holds results */
-.view-search {
-  position: relative;
-  min-height: 100%;
-  padding: 0 1.5rem 4.5rem;
-}
-
 /* Results layer — below center, does not move greeting/search */
 .results-layer {
   position: absolute;
-  top: calc(42% + 7.5rem);
+  top: calc(42% + 5.85rem);
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 720px;
   z-index: 1;
   padding: 0 0 2rem;
-  transition: opacity 0.25s ease;
-}
-
-.results-layer.hidden-results {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
 }
 
 .live-results {
@@ -773,10 +648,9 @@ body {
   z-index: 2;
 }
 
-/* ===== Apps & Shortcuts views ===== */
-.view-apps,
-.view-create {
-  padding: 2rem 2.5rem 5.5rem 3.75rem;
+/* ===== Apps view (Microsoft-style) ===== */
+.view-apps {
+  padding: 2rem 2.5rem 3.5rem 3.75rem;
   max-width: 1100px;
 }
 
@@ -805,13 +679,6 @@ body {
   letter-spacing: -0.01em;
   color: var(--text);
   margin-bottom: 0.9rem;
-  padding-left: 0.1rem;
-}
-
-.shortcuts-hint {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 1.1rem;
   padding-left: 0.1rem;
 }
 
@@ -877,26 +744,6 @@ body {
   line-height: 1.3;
 }
 
-/* Shortcut key badge */
-.shortcut-card {
-  position: relative;
-}
-
-.shortcut-key {
-  flex-shrink: 0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--text-muted);
-  background: var(--key-bg);
-  border: 1px solid var(--key-border);
-  border-radius: 6px;
-  padding: 0.2rem 0.5rem;
-  min-width: 1.75rem;
-  text-align: center;
-}
-
 .no-results {
   text-align: center;
   padding: 3rem 1rem;
@@ -958,9 +805,8 @@ body {
     display: flex;
   }
 
-  .view-apps,
-  .view-create {
-    padding: 3.5rem 1.15rem 5.5rem;
+  .view-apps {
+    padding: 3.5rem 1.15rem 2.5rem;
   }
 
   .apps-header h2 {
@@ -976,17 +822,13 @@ body {
     max-width: calc(100% - 0.5rem);
   }
 
-  .center-group.search-bottom {
-    width: calc(100% - 1.5rem);
-    bottom: 1.15rem;
-  }
-
   .search-hint-text {
     font-size: 0.72rem;
     white-space: normal;
     text-align: center;
     max-width: 90%;
   }
+
 }
 
 @media (max-width: 480px) {

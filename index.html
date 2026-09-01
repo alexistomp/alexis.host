@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search · alexis.host</title>
+  <title>alexis.host</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body data-page="search">
+<body>
   <div class="app">
+    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <button class="sidebar-collapse" id="sidebarCollapse" title="Collapse sidebar" aria-label="Collapse sidebar">
@@ -26,14 +27,14 @@
       </div>
 
       <div class="sidebar-top">
-        <a class="nav-item active" href="index.html" title="Search">
+        <button class="nav-item active" data-view="search" title="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
           <span class="nav-label">Search</span>
-        </a>
-        <a class="nav-item" href="apps.html" title="Apps">
+        </button>
+        <button class="nav-item" data-view="apps" title="Apps">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -41,15 +42,8 @@
             <rect x="3" y="14" width="7" height="7"></rect>
           </svg>
           <span class="nav-label">Apps</span>
-        </a>
-        <a class="nav-item" href="create.html" title="Create">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 20h9"></path>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-          </svg>
-          <span class="nav-label">Create</span>
-        </a>
-        <a class="nav-item" href="https://drive.google.com" title="Library">
+        </button>
+        <button class="nav-item" data-view="library" title="Library">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
           </svg>
@@ -59,7 +53,19 @@
             <polyline points="15 3 21 3 21 9"></polyline>
             <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
-        </a>
+        </button>
+        <button class="nav-item" data-view="create" title="Create">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          <span class="nav-label">Create</span>
+          <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </button>
       </div>
 
       <div class="sidebar-bottom">
@@ -86,6 +92,7 @@
       </div>
     </aside>
 
+    <!-- Mobile menu toggle -->
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -94,15 +101,30 @@
       </svg>
     </button>
 
+    <!-- Main content -->
     <main class="main" id="main">
-      <div class="center-group" id="centerGroup">
-        <h1 class="greeting" id="greeting">Good evening</h1>
-        <form class="search-form" id="searchForm" autocomplete="off">
-          <div class="search-box" id="searchBox">
-            <div class="search-row search-row-query">
+      <!-- SEARCH VIEW -->
+      <section class="view view-search active" id="view-search">
+        <!-- Fixed middle group: greeting + search -->
+        <div class="center-group">
+          <h1 class="greeting" id="greeting">Good evening</h1>
+          <form class="search-form" id="searchForm" autocomplete="off">
+            <div class="search-box" id="searchBox">
+              <button type="button" class="search-plus" id="searchPlus" title="Open ChatGPT" aria-label="Open ChatGPT">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
               <div class="search-input-wrap">
-                <input type="search" id="searchInput" class="search-input" placeholder="" spellcheck="false" />
-                <span class="placeholder-anim" id="placeholderAnim" aria-hidden="true">Ask anything</span>
+                <input
+                  type="search"
+                  id="searchInput"
+                  class="search-input"
+                  placeholder=""
+                  spellcheck="false"
+                />
+                <span class="placeholder-anim" id="placeholderAnim" aria-hidden="true">Ask anything...</span>
               </div>
               <button type="button" class="search-clear" id="searchClear" title="Clear" aria-label="Clear search" hidden>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -110,35 +132,34 @@
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               </button>
-            </div>
-            <div class="search-row search-row-tools">
-              <button type="button" class="search-plus" id="searchPlus" title="Open ChatGPT" aria-label="Open ChatGPT">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-              </button>
-              <div class="engine-toggle" id="engineToggle" role="group" aria-label="Search engine">
-                <button type="button" class="engine-btn active" data-engine="google" title="Search with Google">Google</button>
-                <button type="button" class="engine-btn" data-engine="chatgpt" title="Ask ChatGPT">ChatGPT</button>
-              </div>
               <button type="submit" class="search-go" title="Go">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </button>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
 
-      <section class="view view-search active" id="view-search">
+        <!-- Results layer — sits below, does not shift the center group -->
         <div class="results-layer" id="resultsLayer">
           <div class="live-results" id="liveResults" hidden>
             <h3 class="live-title">Suggested apps</h3>
             <div class="live-list links-grid" id="liveList"></div>
           </div>
+        </div>
+
+      </section>
+
+      <!-- APPS VIEW -->
+      <section class="view view-apps" id="view-apps">
+        <div class="apps-header">
+          <h2>Apps</h2>
+        </div>
+        <div class="categories" id="categories"></div>
+        <div class="no-results" id="noResults" hidden>
+          <p>No apps found.</p>
         </div>
       </section>
     </main>
