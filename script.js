@@ -1,95 +1,239 @@
-/* ===== App data ===== */
+/* ===== App data (general apps — no M365 / Google Workspace tools) ===== */
 const LINKS = [
   {
     category: "Productivity",
     items: [
-      { name: "Notion", desc: "All-in-one workspace", url: "https://notion.so", icon: "📝" },
-      { name: "Microsoft 365", desc: "Office apps & cloud", url: "https://www.office.com", icon: "📊" },
-      { name: "Google Drive", desc: "Cloud storage & docs", url: "https://drive.google.com", icon: "📁" },
-      { name: "Google Calendar", desc: "Schedule & events", url: "https://calendar.google.com", icon: "📅" },
-      { name: "Trello", desc: "Boards & task lists", url: "https://trello.com", icon: "📋" },
+      { name: "Notion", desc: "Notes", url: "https://notion.so", icon: "📝" },
+      { name: "Trello", desc: "Tasks", url: "https://trello.com", icon: "📋" },
     ],
   },
   {
     category: "Development",
     items: [
-      { name: "GitHub", desc: "Code hosting & collab", url: "https://github.com", icon: "🐙" },
-      { name: "VS Code", desc: "Code editor in the browser", url: "https://vscode.dev", icon: "💻" },
-      { name: "Stack Overflow", desc: "Q&A for developers", url: "https://stackoverflow.com", icon: "💬" },
-      { name: "MDN", desc: "Web docs & references", url: "https://developer.mozilla.org", icon: "📖" },
-      { name: "CodePen", desc: "Front-end playground", url: "https://codepen.io", icon: "🖊️" },
-      { name: "Squarespace", desc: "Website builder", url: "https://www.squarespace.com", icon: "⬛" },
+      { name: "GitHub", desc: "Code", url: "https://github.com", icon: "🐙" },
+      { name: "VS Code", desc: "Editor", url: "https://vscode.dev", icon: "💻" },
+      { name: "Stack Overflow", desc: "Q&A", url: "https://stackoverflow.com", icon: "💬" },
+      { name: "MDN", desc: "Docs", url: "https://developer.mozilla.org", icon: "📖" },
+      { name: "CodePen", desc: "Playground", url: "https://codepen.io", icon: "🖊️" },
+      { name: "Squarespace", desc: "Builder", url: "https://www.squarespace.com", icon: "⬛" },
     ],
   },
   {
     category: "AI",
     items: [
-      { name: "ChatGPT", desc: "Conversational AI", url: "https://chatgpt.com", icon: "🤖" },
-      { name: "Claude", desc: "AI assistant by Anthropic", url: "https://claude.ai", icon: "✨" },
-      { name: "Grok", desc: "AI by xAI", url: "https://grok.x.ai", icon: "⚡" },
+      { name: "ChatGPT", desc: "AI", url: "https://chatgpt.com", icon: "🤖" },
+      { name: "Claude", desc: "AI", url: "https://claude.ai", icon: "✨" },
+      { name: "Grok", desc: "AI", url: "https://grok.com", icon: "⚡" },
     ],
   },
   {
     category: "Creative",
     items: [
-      { name: "Canva", desc: "Design made simple", url: "https://canva.com", icon: "🎨" },
-      { name: "Figma", desc: "Collaborative design", url: "https://figma.com", icon: "✏️" },
-      { name: "Excalidraw", desc: "Sketch & whiteboard", url: "https://excalidraw.com", icon: "🖌️" },
-      { name: "Remove.bg", desc: "Background remover", url: "https://remove.bg", icon: "✂️" },
+      { name: "Canva", desc: "Design", url: "https://canva.com", icon: "🎨" },
+      { name: "Figma", desc: "Design", url: "https://figma.com", icon: "✏️" },
+      { name: "Excalidraw", desc: "Sketch", url: "https://excalidraw.com", icon: "🖌️" },
+      { name: "Remove.bg", desc: "Edit", url: "https://remove.bg", icon: "✂️" },
     ],
   },
   {
     category: "Education",
     items: [
-      { name: "Khan Academy", desc: "Free education for all", url: "https://khanacademy.org", icon: "🎓" },
-      { name: "Wikipedia", desc: "The free encyclopedia", url: "https://wikipedia.org", icon: "🌐" },
+      { name: "Canvas", desc: "Learning", url: "https://canvas.qut.edu.au/login", icon: "🎓" },
+      { name: "Khan Academy", desc: "Learning", url: "https://khanacademy.org", icon: "📚" },
+      { name: "Wikipedia", desc: "Reference", url: "https://wikipedia.org", icon: "🌐" },
     ],
   },
   {
     category: "Social Media",
     items: [
-      { name: "Discord", desc: "Chat & communities", url: "https://discord.com", icon: "🎮" },
+      { name: "Discord", desc: "Chat", url: "https://discord.com/app", icon: "🎮" },
       { name: "WhatsApp", desc: "Messaging", url: "https://web.whatsapp.com", icon: "💚" },
-      { name: "Facebook", desc: "Social network", url: "https://facebook.com", icon: "📘" },
-      { name: "Instagram", desc: "Photos & stories", url: "https://instagram.com", icon: "📷" },
-      { name: "Snapchat", desc: "Snaps & stories", url: "https://web.snapchat.com", icon: "👻" },
-      { name: "Pinterest", desc: "Ideas & inspiration", url: "https://pinterest.com", icon: "📌" },
-      { name: "LinkedIn", desc: "Professional network", url: "https://linkedin.com", icon: "💼" },
-      { name: "Reddit", desc: "Communities & discussion", url: "https://reddit.com", icon: "🟠" },
-      { name: "X (Twitter)", desc: "Real-time conversation", url: "https://x.com", icon: "𝕏" },
+      { name: "Facebook", desc: "Social", url: "https://facebook.com", icon: "📘" },
+      { name: "Instagram", desc: "Photos", url: "https://instagram.com", icon: "📷" },
+      { name: "Snapchat", desc: "Snaps", url: "https://web.snapchat.com", icon: "👻" },
+      { name: "Pinterest", desc: "Ideas", url: "https://pinterest.com", icon: "📌" },
+      { name: "LinkedIn", desc: "Network", url: "https://linkedin.com", icon: "💼" },
+      { name: "Reddit", desc: "Discuss", url: "https://reddit.com", icon: "🟠" },
+      { name: "X (Twitter)", desc: "Social", url: "https://x.com", icon: "𝕏" },
     ],
   },
   {
     category: "Music & Entertainment",
     items: [
-      { name: "Spotify", desc: "Music & podcasts", url: "https://open.spotify.com", icon: "🎵" },
-      { name: "YouTube", desc: "Videos & streams", url: "https://youtube.com", icon: "▶️" },
-      { name: "Twitch", desc: "Live streaming", url: "https://twitch.tv", icon: "🟣" },
+      { name: "Spotify", desc: "Music", url: "https://open.spotify.com", icon: "🎵" },
+      { name: "YouTube", desc: "Video", url: "https://youtube.com", icon: "▶️" },
+      { name: "Twitch", desc: "Streaming", url: "https://twitch.tv", icon: "🟣" },
     ],
   },
   {
     category: "Shopping",
     items: [
-      { name: "Amazon", desc: "Online shopping", url: "https://amazon.com", icon: "📦" },
+      { name: "Amazon", desc: "Shopping", url: "https://amazon.com", icon: "📦" },
     ],
   },
   {
     category: "Services",
     items: [
-      { name: "Apple", desc: "Apple products", url: "https://apple.com", icon: "🍎" },
-      { name: "Samsung", desc: "Samsung products", url: "https://samsung.com", icon: "📱" },
+      { name: "Apple", desc: "Products", url: "https://apple.com", icon: "🍎" },
+      { name: "Samsung", desc: "Products", url: "https://samsung.com", icon: "📱" },
     ],
   },
 ];
 
-/* ===== DOM ===== */
+/* ===== Create page — Microsoft 365 & Google Workspace ===== */
+const CREATE_LINKS = [
+  {
+    category: "Microsoft 365",
+    items: [
+      { name: "Word", desc: "Docs", url: "https://www.office.com/launch/word", icon: "📘" },
+      { name: "Excel", desc: "Sheets", url: "https://www.office.com/launch/excel", icon: "📗" },
+      { name: "PowerPoint", desc: "Slides", url: "https://www.office.com/launch/powerpoint", icon: "📙" },
+      { name: "OneDrive", desc: "Storage", url: "https://onedrive.live.com", icon: "☁️" },
+      { name: "Outlook", desc: "Email", url: "https://outlook.live.com", icon: "📧" },
+      { name: "Teams", desc: "Chat", url: "https://teams.microsoft.com", icon: "👥" },
+      { name: "OneNote", desc: "Notes", url: "https://www.office.com/launch/onenote", icon: "📓" },
+      { name: "Forms", desc: "Surveys", url: "https://forms.office.com", icon: "📋" },
+    ],
+  },
+  {
+    category: "Google Workspace",
+    items: [
+      { name: "Docs", desc: "Docs", url: "https://docs.google.com", icon: "📄" },
+      { name: "Sheets", desc: "Sheets", url: "https://sheets.google.com", icon: "📊" },
+      { name: "Slides", desc: "Slides", url: "https://slides.google.com", icon: "📽" },
+      { name: "Drive", desc: "Storage", url: "https://drive.google.com", icon: "📁" },
+      { name: "Gmail", desc: "Email", url: "https://mail.google.com", icon: "✉️" },
+      { name: "Calendar", desc: "Schedule", url: "https://calendar.google.com", icon: "📅" },
+      { name: "Meet", desc: "Meet", url: "https://meet.google.com", icon: "🎥" },
+      { name: "Forms", desc: "Surveys", url: "https://forms.google.com", icon: "📝" },
+    ],
+  },
+];
+
+const RESERVED_SHORTCUTS = {
+  y: "YouTube",
+  x: "X (Twitter)",
+  chat: "ChatGPT",
+  in: "Instagram",
+  r: "Reddit",
+  a: "Apple",
+  ca: "Canvas",
+};
+
+function getAppLinks() {
+  return LINKS.flatMap((g) =>
+    g.items.map((item) => ({ ...item, category: g.category, source: "apps" }))
+  );
+}
+
+function getCreateLinks() {
+  return CREATE_LINKS.flatMap((g) =>
+    g.items.map((item) => ({ ...item, category: g.category, source: "create" }))
+  );
+}
+
+function getAllLinks() {
+  return [...getAppLinks(), ...getCreateLinks()];
+}
+
+function generateKeyCandidates(name) {
+  const clean = name.replace(/[^a-zA-Z0-9\s]/g, " ").trim().toLowerCase();
+  const words = clean.split(/\s+/).filter(Boolean);
+  const candidates = [];
+  if (words.length === 0) return candidates;
+  if (words[0].length <= 4) candidates.push(words[0]);
+  if (words.length >= 2) candidates.push(words.map((w) => w[0]).join(""));
+  if (words[0].length >= 2) candidates.push(words[0].slice(0, 2));
+  if (words[0].length >= 3) candidates.push(words[0].slice(0, 3));
+  candidates.push(words[0]);
+  if (words.length >= 2) {
+    candidates.push(words[0].slice(0, 2) + words[1][0]);
+    candidates.push(words[0][0] + words[1].slice(0, 2));
+  }
+  return [...new Set(candidates)];
+}
+
+function buildShortcuts() {
+  const all = getAllLinks();
+  const usedKeys = new Set(Object.keys(RESERVED_SHORTCUTS));
+  const byName = new Map();
+  all.forEach((item) => {
+    if (!byName.has(item.name)) byName.set(item.name, item);
+  });
+  const shortcuts = [];
+
+  for (const [key, name] of Object.entries(RESERVED_SHORTCUTS)) {
+    const item = byName.get(name);
+    if (item) {
+      shortcuts.push({
+        key,
+        name: item.name,
+        desc: item.desc,
+        url: item.url,
+        icon: item.icon,
+        source: item.source,
+      });
+    }
+  }
+
+  for (const item of all) {
+    if (shortcuts.some((s) => s.url === item.url)) continue;
+
+    const candidates = generateKeyCandidates(item.name);
+    if (item.category === "Google Workspace" && item.name === "Forms") {
+      candidates.unshift("gf", "gforms");
+    }
+    if (item.category === "Microsoft 365" && item.name === "Forms") {
+      candidates.unshift("mforms", "msforms");
+    }
+    // Disambiguate Docs/Sheets/Slides between suites
+    if (item.category === "Google Workspace") {
+      if (item.name === "Docs") candidates.unshift("gd", "gdocs");
+      if (item.name === "Sheets") candidates.unshift("gs", "gsheets");
+      if (item.name === "Slides") candidates.unshift("gsl", "gslides");
+      if (item.name === "Drive") candidates.unshift("gdrive", "drv");
+    }
+
+    let chosen = null;
+    for (const c of candidates) {
+      if (c && !usedKeys.has(c)) {
+        chosen = c;
+        break;
+      }
+    }
+    if (!chosen) {
+      let base = (candidates[0] || item.name.slice(0, 2).toLowerCase() || "app").replace(/\s/g, "");
+      let n = 2;
+      chosen = base;
+      while (usedKeys.has(chosen)) {
+        chosen = base + n;
+        n += 1;
+      }
+    }
+    usedKeys.add(chosen);
+    shortcuts.push({
+      key: chosen,
+      name: item.name,
+      desc: item.desc,
+      url: item.url,
+      icon: item.icon,
+      source: item.source,
+    });
+  }
+
+  return shortcuts;
+}
+
+const SHORTCUTS = buildShortcuts();
+const SHORTCUT_BY_KEY = new Map(SHORTCUTS.map((s) => [s.key, s]));
+
+const currentPage = document.body.dataset.page || "search";
+
 const sidebar = document.getElementById("sidebar");
 const menuToggle = document.getElementById("menuToggle");
 const sidebarCollapse = document.getElementById("sidebarCollapse");
-const navItems = document.querySelectorAll(".nav-item");
-const viewSearch = document.getElementById("view-search");
-const viewApps = document.getElementById("view-apps");
 const greetingEl = document.getElementById("greeting");
+const centerGroup = document.getElementById("centerGroup");
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 const searchPlus = document.getElementById("searchPlus");
@@ -98,10 +242,29 @@ const placeholderAnim = document.getElementById("placeholderAnim");
 const liveResults = document.getElementById("liveResults");
 const liveList = document.getElementById("liveList");
 const categoriesEl = document.getElementById("categories");
+const createCategoriesEl = document.getElementById("createCategories");
 const noResultsEl = document.getElementById("noResults");
 const themeToggle = document.getElementById("themeToggle");
+const resultsLayer = document.getElementById("resultsLayer");
+const engineToggle = document.getElementById("engineToggle");
+const engineBtns = engineToggle ? engineToggle.querySelectorAll(".engine-btn") : [];
 
-/* ===== Theme ===== */
+let searchEngine = localStorage.getItem("searchEngine") || "google";
+
+function applyEngine(engine) {
+  searchEngine = engine;
+  localStorage.setItem("searchEngine", engine);
+  engineBtns.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.engine === engine);
+  });
+}
+
+if (engineToggle) {
+  engineBtns.forEach((btn) => {
+    btn.addEventListener("click", () => applyEngine(btn.dataset.engine));
+  });
+}
+
 function getPreferredTheme() {
   const saved = localStorage.getItem("theme");
   if (saved === "light" || saved === "dark") return saved;
@@ -113,38 +276,41 @@ function applyTheme(theme) {
   localStorage.setItem("theme", theme);
 }
 
-themeToggle.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme") || "dark";
-  applyTheme(current === "dark" ? "light" : "dark");
-});
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") || "dark";
+    applyTheme(current === "dark" ? "light" : "dark");
+  });
+}
 
-/* ===== Sidebar collapse ===== */
 function getPreferredSidebar() {
-  const saved = localStorage.getItem("sidebarCollapsed");
-  return saved === "true";
+  return localStorage.getItem("sidebarCollapsed") === "true";
 }
 
 function applySidebarCollapsed(collapsed) {
+  if (!sidebar) return;
   sidebar.classList.toggle("collapsed", collapsed);
   localStorage.setItem("sidebarCollapsed", collapsed ? "true" : "false");
-  sidebarCollapse.title = collapsed ? "Expand sidebar" : "Collapse sidebar";
-  sidebarCollapse.setAttribute("aria-label", collapsed ? "Expand sidebar" : "Collapse sidebar");
+  if (sidebarCollapse) {
+    sidebarCollapse.title = collapsed ? "Expand sidebar" : "Collapse sidebar";
+    sidebarCollapse.setAttribute("aria-label", collapsed ? "Expand sidebar" : "Collapse sidebar");
+  }
 }
 
-sidebarCollapse.addEventListener("click", () => {
-  const isCollapsed = sidebar.classList.contains("collapsed");
-  applySidebarCollapsed(!isCollapsed);
-});
+if (sidebarCollapse) {
+  sidebarCollapse.addEventListener("click", () => {
+    applySidebarCollapsed(!sidebar.classList.contains("collapsed"));
+  });
+}
 
-/* ===== Greeting ===== */
 function setGreeting() {
+  if (!greetingEl) return;
   const hour = new Date().getHours();
   if (hour < 12) greetingEl.textContent = "Good morning";
   else if (hour < 18) greetingEl.textContent = "Good afternoon";
   else greetingEl.textContent = "Good evening";
 }
 
-/* ===== Animated placeholder ===== */
 const PLACEHOLDERS = [
   "Ask anything",
   "Open an app, search Google, or ask ChatGPT",
@@ -153,14 +319,15 @@ let placeholderIndex = 0;
 let placeholderTimer = null;
 
 function updatePlaceholderVisibility() {
+  if (!searchInput || !placeholderAnim) return;
   const hasValue = searchInput.value.trim().length > 0;
   placeholderAnim.classList.toggle("hidden", hasValue);
-  searchClear.hidden = !hasValue;
+  if (searchClear) searchClear.hidden = !hasValue;
 }
 
 function cyclePlaceholder() {
+  if (!placeholderAnim || !searchInput) return;
   if (searchInput.value.trim().length > 0) return;
-
   placeholderAnim.classList.add("fade-out");
   setTimeout(() => {
     placeholderIndex = (placeholderIndex + 1) % PLACEHOLDERS.length;
@@ -170,47 +337,47 @@ function cyclePlaceholder() {
 }
 
 function startPlaceholderCycle() {
+  if (!placeholderAnim) return;
   if (placeholderTimer) clearInterval(placeholderTimer);
   placeholderAnim.textContent = PLACEHOLDERS[0];
   placeholderIndex = 0;
   placeholderTimer = setInterval(cyclePlaceholder, 6000);
 }
 
-/* ===== Flatten links ===== */
-function getAllLinks() {
-  return LINKS.flatMap((g) =>
-    g.items.map((item) => ({ ...item, category: g.category }))
-  );
-}
+const FREQUENTLY_USED = ["ChatGPT", "Instagram", "YouTube", "X (Twitter)", "Canvas"];
 
-const FREQUENTLY_USED = ["ChatGPT", "Instagram", "YouTube", "X (Twitter)"];
-
-function createAppCard(item, sameTab) {
+function createAppCard(item, sameTab, showKey) {
   const a = document.createElement("a");
-  a.className = "link-card";
+  a.className = "link-card" + (showKey && item.key ? " shortcut-card" : "");
   a.href = item.url;
   a.target = sameTab ? "_self" : "_blank";
   a.rel = "noopener noreferrer";
-  a.innerHTML = `
-    <div class="link-icon">${item.icon}</div>
-    <div class="link-info">
-      <div class="link-name">${item.name}</div>
-      <div class="link-desc">${item.desc}</div>
-    </div>
-  `;
+  const keyHtml =
+    showKey && item.key ? '<div class="shortcut-key">' + item.key + "</div>" : "";
+  a.innerHTML =
+    '<div class="link-icon">' +
+    item.icon +
+    '</div><div class="link-info"><div class="link-name">' +
+    item.name +
+    '</div><div class="link-desc">' +
+    item.desc +
+    "</div></div>" +
+    keyHtml;
   return a;
 }
 
-/* ===== Render Apps ===== */
 function renderApps() {
+  if (!categoriesEl) return;
   categoriesEl.innerHTML = "";
-  let total = 0;
-  const all = getAllLinks();
+  const all = getAppLinks();
+  const keyByUrl = new Map(SHORTCUTS.map((s) => [s.url, s.key]));
+  const keyFor = (item) => keyByUrl.get(item.url);
 
-  // Frequently used section
-  const freqItems = FREQUENTLY_USED.map((name) =>
-    all.find((item) => item.name === name)
-  ).filter(Boolean);
+  const freqItems = FREQUENTLY_USED.map((name) => {
+    const item = all.find((i) => i.name === name);
+    if (!item) return null;
+    return { ...item, key: keyFor(item) };
+  }).filter(Boolean);
 
   if (freqItems.length) {
     const cat = document.createElement("div");
@@ -221,41 +388,70 @@ function renderApps() {
     cat.appendChild(title);
     const grid = document.createElement("div");
     grid.className = "links-grid";
-    freqItems.forEach((item) => grid.appendChild(createAppCard(item, false)));
+    freqItems.forEach((item) => grid.appendChild(createAppCard(item, false, true)));
     cat.appendChild(grid);
     categoriesEl.appendChild(cat);
   }
 
   LINKS.forEach((group) => {
-    total += group.items.length;
     const cat = document.createElement("div");
     cat.className = "category";
-
     const title = document.createElement("h3");
     title.className = "category-title";
     title.textContent = group.category;
     cat.appendChild(title);
-
     const grid = document.createElement("div");
     grid.className = "links-grid";
-
     group.items.forEach((item) => {
-      grid.appendChild(createAppCard(item, false));
+      grid.appendChild(createAppCard({ ...item, key: keyFor(item) }, false, true));
     });
-
     cat.appendChild(grid);
     categoriesEl.appendChild(cat);
   });
 
-  noResultsEl.hidden = total > 0;
+  if (noResultsEl) noResultsEl.hidden = all.length > 0;
 }
 
-/* ===== Live results (animated) ===== */
+function renderCreate() {
+  if (!createCategoriesEl) return;
+  const keyByUrl = new Map(SHORTCUTS.map((s) => [s.url, s.key]));
+  createCategoriesEl.innerHTML = "";
+  CREATE_LINKS.forEach((group) => {
+    const cat = document.createElement("div");
+    cat.className = "category";
+    const title = document.createElement("h3");
+    title.className = "category-title";
+    title.textContent = group.category;
+    cat.appendChild(title);
+    const grid = document.createElement("div");
+    grid.className = "links-grid";
+    group.items.forEach((item) => {
+      grid.appendChild(
+        createAppCard({ ...item, key: keyByUrl.get(item.url) }, false, true)
+      );
+    });
+    cat.appendChild(grid);
+    createCategoriesEl.appendChild(cat);
+  });
+}
+
 function updateLiveResults(query) {
+  if (!liveResults || !liveList) return;
   const q = query.trim().toLowerCase();
   if (!q) {
     liveResults.hidden = true;
     liveList.innerHTML = "";
+    return;
+  }
+
+  const shortcutMatch = SHORTCUT_BY_KEY.get(q);
+  if (shortcutMatch) {
+    liveList.innerHTML = "";
+    const a = createAppCard(shortcutMatch, true, true);
+    a.style.animationDelay = "0.04s";
+    a.classList.add("live-card-anim");
+    liveList.appendChild(a);
+    liveResults.hidden = false;
     return;
   }
 
@@ -272,17 +468,17 @@ function updateLiveResults(query) {
     return;
   }
 
+  const keyByUrl = new Map(SHORTCUTS.map((s) => [s.url, s.key]));
   liveList.innerHTML = "";
   matches.slice(0, 8).forEach((item, i) => {
-    const a = createAppCard(item, true);
-    a.style.animationDelay = `${0.04 * (i + 1)}s`;
+    const a = createAppCard({ ...item, key: keyByUrl.get(item.url) }, true, true);
+    a.style.animationDelay = 0.04 * (i + 1) + "s";
     a.classList.add("live-card-anim");
     liveList.appendChild(a);
   });
   liveResults.hidden = false;
 }
 
-/* ===== URL helpers ===== */
 function looksLikeUrl(str) {
   const s = str.trim();
   if (/^https?:\/\//i.test(s)) return true;
@@ -296,24 +492,24 @@ function normalizeUrl(str) {
   return "https://" + s;
 }
 
-/** 6 words or less → Google; more → ChatGPT */
-function isLongerQuery(str) {
-  const words = str.trim().split(/\s+/).filter(Boolean);
-  return words.length > 6;
-}
-
-/* ===== Navigate in same tab ===== */
 function goTo(url) {
   window.location.href = url;
 }
 
-/* ===== Submit: match → URL → ChatGPT (long) / Google (short) ===== */
 function handleSearchSubmit(e) {
   e.preventDefault();
+  if (!searchInput) return;
   const raw = searchInput.value.trim();
   if (!raw) return;
 
   const q = raw.toLowerCase();
+
+  const shortcut = SHORTCUT_BY_KEY.get(q);
+  if (shortcut) {
+    goTo(shortcut.url);
+    return;
+  }
+
   const matches = getAllLinks().filter(
     (item) =>
       item.name.toLowerCase() === q ||
@@ -330,89 +526,85 @@ function handleSearchSubmit(e) {
     return;
   }
 
-  if (isLongerQuery(raw)) {
+  if (searchEngine === "chatgpt") {
     goTo("https://chatgpt.com/?q=" + encodeURIComponent(raw));
-    return;
+  } else {
+    goTo("https://www.google.com/search?q=" + encodeURIComponent(raw));
   }
-
-  goTo("https://www.google.com/search?q=" + encodeURIComponent(raw));
 }
 
-/* ===== Navigation ===== */
-function setView(viewName) {
-  if (viewName === "library") {
-    goTo("https://drive.google.com");
-    return;
-  }
+function applySearchPosition() {
+  if (!centerGroup) return;
+  const isBottom = currentPage === "apps" || currentPage === "create";
+  centerGroup.classList.toggle("search-bottom", isBottom);
+  if (greetingEl) greetingEl.classList.toggle("hidden-greeting", isBottom);
+  if (resultsLayer) resultsLayer.classList.toggle("hidden-results", isBottom);
+}
 
-  if (viewName === "create") {
-    goTo("https://m365.cloud.microsoft/apps");
-    return;
-  }
-
-  navItems.forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.view === viewName);
+if (menuToggle && sidebar) {
+  menuToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
   });
-
-  viewSearch.classList.toggle("active", viewName === "search");
-  viewApps.classList.toggle("active", viewName === "apps");
-  sidebar.classList.remove("open");
-
-  if (viewName === "search") {
-    setTimeout(() => searchInput.focus(), 50);
-  }
 }
 
-navItems.forEach((btn) => {
-  btn.addEventListener("click", () => setView(btn.dataset.view));
-});
+const mainEl = document.getElementById("main");
+if (mainEl && sidebar) {
+  mainEl.addEventListener("click", () => {
+    if (sidebar.classList.contains("open")) sidebar.classList.remove("open");
+  });
+}
 
-menuToggle.addEventListener("click", () => {
-  sidebar.classList.toggle("open");
-});
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    updateLiveResults(searchInput.value);
+    updatePlaceholderVisibility();
+  });
+}
 
-document.getElementById("main").addEventListener("click", () => {
-  if (sidebar.classList.contains("open")) {
-    sidebar.classList.remove("open");
-  }
-});
+if (searchForm) {
+  searchForm.addEventListener("submit", handleSearchSubmit);
+}
 
-/* ===== Search interactions ===== */
-searchInput.addEventListener("input", () => {
-  updateLiveResults(searchInput.value);
-  updatePlaceholderVisibility();
-});
+if (searchPlus) {
+  searchPlus.addEventListener("click", () => goTo("https://chatgpt.com"));
+}
 
-searchForm.addEventListener("submit", handleSearchSubmit);
-
-searchPlus.addEventListener("click", () => {
-  goTo("https://chatgpt.com");
-});
-
-searchClear.addEventListener("click", () => {
-  searchInput.value = "";
-  updateLiveResults("");
-  updatePlaceholderVisibility();
-  searchInput.focus();
-});
+if (searchClear) {
+  searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    updateLiveResults("");
+    updatePlaceholderVisibility();
+    searchInput.focus();
+  });
+}
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "/" && document.activeElement !== searchInput) {
+  if (e.key === "/" && document.activeElement !== searchInput && searchInput) {
     e.preventDefault();
-    setView("search");
+    if (currentPage !== "search") {
+      window.location.href = "index.html";
+      return;
+    }
     searchInput.focus();
   }
-  if (e.key === "Escape") {
+  if (e.key === "Escape" && searchInput) {
     searchInput.blur();
-    liveResults.hidden = true;
+    if (liveResults) liveResults.hidden = true;
   }
 });
 
-/* Init */
 applyTheme(getPreferredTheme());
 applySidebarCollapsed(getPreferredSidebar());
+applyEngine(searchEngine);
 setGreeting();
-renderApps();
-setView("search");
+applySearchPosition();
+
+if (currentPage === "apps") renderApps();
+if (currentPage === "create") renderCreate();
 startPlaceholderCycle();
 updatePlaceholderVisibility();
+if (currentPage === "search") {
+  setTimeout(() => {
+    if (searchInput) searchInput.focus();
+  }, 50);
+}

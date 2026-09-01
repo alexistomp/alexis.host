@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search · alexis.host</title>
+  <title>Create · alexis.host</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body data-page="search">
+<body data-page="create">
   <div class="app">
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
@@ -26,7 +26,7 @@
       </div>
 
       <div class="sidebar-top">
-        <a class="nav-item active" href="index.html" title="Search">
+        <a class="nav-item" href="index.html" title="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -42,7 +42,7 @@
           </svg>
           <span class="nav-label">Apps</span>
         </a>
-        <a class="nav-item" href="create.html" title="Create">
+        <a class="nav-item active" href="create.html" title="Create">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 20h9"></path>
             <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
@@ -133,13 +133,11 @@
         </form>
       </div>
 
-      <section class="view view-search active" id="view-search">
-        <div class="results-layer" id="resultsLayer">
-          <div class="live-results" id="liveResults" hidden>
-            <h3 class="live-title">Suggested apps</h3>
-            <div class="live-list links-grid" id="liveList"></div>
-          </div>
+      <section class="view view-create active" id="view-create">
+        <div class="apps-header">
+          <h2>Create</h2>
         </div>
+        <div class="categories" id="createCategories"></div>
       </section>
     </main>
   </div>
